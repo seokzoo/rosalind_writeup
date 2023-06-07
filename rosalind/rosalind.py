@@ -1,4 +1,4 @@
-def parse_FASTA(data):
+def parse_fasta(data):
     label = ""
     seq = ""
     parsed = {}

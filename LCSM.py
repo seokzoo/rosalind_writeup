@@ -25,7 +25,7 @@ def get_shared_motifs(str1, str2):
 
 if __name__ == "__main__":
     with open("data") as f:
-        parsed = rosalind.parse_FASTA(f.read())
+        parsed = rosalind.parse_fasta(f.read())
         seqs = [s for s in parsed.values()]
 
         str1 = seqs.pop()
