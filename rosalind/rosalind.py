@@ -17,3 +17,17 @@ def parse_fasta(data):
         parsed[label] = seq
 
     return parsed
+
+def get_rc(seq):
+    rc = ''
+    for b in seq[::-1]:
+        match b:
+            case 'A':
+                rc += "T"
+            case 'T':
+                rc += "A"
+            case 'G':
+                rc += "C"
+            case 'C':
+                rc += "G"
+    return rc
