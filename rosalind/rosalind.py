@@ -88,15 +88,8 @@ def parse_fasta(data):
     return parsed
 
 def get_rc(seq):
-    rc = ''
-    for b in seq[::-1]:
-        match b:
-            case 'A':
-                rc += "T"
-            case 'T':
-                rc += "A"
-            case 'G':
-                rc += "C"
-            case 'C':
-                rc += "G"
-    return rc
+    intab = "ATGCatgc"
+    outtab = "TACGtacg"
+    transtab = str.maketrans(intab, outtab)
+
+    return seq.translate(transtab)[::-1]
