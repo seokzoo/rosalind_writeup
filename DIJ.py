@@ -12,11 +12,18 @@ if __name__ == "__main__":
         for a, b, w in data:
             edges[a].append((w, a, b))
 
-        [pq.put(x) for x in edges[1]]
         distances[1] = 0
+        pq.put((0, 0, 1))
         while not pq.empty(): 
             w, a, b = pq.get()
-            [pq.put(x) for x in edges[b]]
-
-            if distances[a] + w < distances[b]:
-                distances[b] = distances[a] + w
+            for nw, na, nb in edges[b]:
+                if distances[b] + nw < distances[nb]:
+                    distances[nb] = distances[b] + nw
+                    pq.put((nw, na, nb))
+        solution = []
+        for i in range(1, v+1):
+            if distances[i] == float("INF"):
+                solution.append("-1") 
+            else:
+                solution.append(str(distances[i]))
+        print(' '.join(solution))
